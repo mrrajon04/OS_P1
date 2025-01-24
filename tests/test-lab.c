@@ -268,7 +268,7 @@ void test_remove_last_element(void) {
     list_add(lst_, alloc_data(2));
     list_add(lst_, alloc_data(3));
 
-    void *data = list_remove_index(lst_, 2); // Remove last element
+    void *data = list_remove_index(lst_, 2); // Remove last element.
     TEST_ASSERT_TRUE(*((int *)data) == 1);
     free(data);
 
