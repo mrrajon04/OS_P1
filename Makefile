@@ -20,14 +20,13 @@ EXE_SRCS := $(shell find $(EXE_DIR) -name *.c)
 EXE_OBJS := $(EXE_SRCS:%=$(BUILD_DIR)/%.o)
 EXE_DEPS := $(EXE_OBJS:.o=.d)
 
-# Compilation Flags
 CFLAGS ?= -Wall -Wextra -fno-omit-frame-pointer -fsanitize=address -g -MMD -MP
 LDFLAGS ?= -pthread -lreadline
 
-# Default Targets
+# Default Target
 all: $(TARGET_EXEC) $(TARGET_TEST)
 
-# Build the Main Executable
+# Build the Main Program
 $(TARGET_EXEC): $(OBJS) $(EXE_OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(EXE_OBJS) -o $@ $(LDFLAGS)
 
@@ -35,7 +34,7 @@ $(TARGET_EXEC): $(OBJS) $(EXE_OBJS)
 $(TARGET_TEST): $(OBJS) $(TEST_OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(TEST_OBJS) -o $@ $(LDFLAGS)
 
-# Rule to Build Object Files
+# Compile C Files into Object Files
 $(BUILD_DIR)/%.c.o: %.c
 	mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -44,7 +43,7 @@ $(BUILD_DIR)/%.c.o: %.c
 check: $(TARGET_TEST)
 	ASAN_OPTIONS=detect_leaks=1 ./$<
 
-# Clean Up
+# Clean Build Artifacts
 .PHONY: clean
 clean:
 	$(RM) -rf $(BUILD_DIR) $(TARGET_EXEC) $(TARGET_TEST)
@@ -57,3 +56,4 @@ install-deps:
 
 # Include Dependency Files
 -include $(DEPS) $(TEST_DEPS) $(EXE_DEPS)
+
