@@ -70,7 +70,7 @@ list_t *list_add(list_t *list, void *data) {
 }
 
 /**
- * @brief Remove the data at a specific index.
+ * @brief Remove the data 
  */
 void *list_remove_index(list_t *list, size_t index) {
     if (!list || index >= list->size) return NULL;
