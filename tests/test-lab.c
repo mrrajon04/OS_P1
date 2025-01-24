@@ -268,7 +268,7 @@ void test_remove_last_element(void) {
     list_add(lst_, alloc_data(2));
     list_add(lst_, alloc_data(3));
 
-    void *data = list_remove_index(lst_, 2); // Remove last element.
+    void *data = list_remove_index(lst_, 2); // Remove last element
     TEST_ASSERT_TRUE(*((int *)data) == 1);
     free(data);
 
@@ -284,7 +284,7 @@ void test_search_nonexistent_element(void) {
 
     int *missing_data = alloc_data(42);
     int index = list_indexof(lst_, missing_data);
-    TEST_ASSERT_EQUAL_INT(-1, index); // Should return -1 for missing data
+    TEST_ASSERT_EQUAL_INT(-1, index); // Should return -1 for missing data.
     free(missing_data);
 }
 
