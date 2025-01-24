@@ -38,7 +38,7 @@ typedef struct list {
 list_t *list_init(void (*destroy_data)(void *), int (*compare_to)(const void *, const void *));
 
 /**
- * @brief Destroy the list and all the associated data. Calls destroy_data on each node's data element.
+ * @brief Destroy the list and all the maassociated data. Calls destroy_data on each node's data element.
  *
  * @param list A pointer to the list that needs to be destroyed.
  */
