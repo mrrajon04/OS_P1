@@ -58,7 +58,7 @@ list_t *list_add(list_t *list, void *data);
  *
  * @param list The list to remove the element from.
  * @param index The index.
- * @return The data that was removed or NULL if nothing was removed
+ * @return The data that was removed or NULL if nothing was removed from the list
  */
 void *list_remove_index(list_t *list, size_t index);
 

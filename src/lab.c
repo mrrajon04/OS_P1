@@ -1,7 +1,7 @@
 #include "lab.h"
 
 /**
- * @brief Initialize for a new list
+ * @brief Initialize for the new list
  */
 list_t *list_init(void (*destroy_data)(void *), int (*compare_to)(const void *, const void *)) {
     list_t *list = (list_t *)malloc(sizeof(list_t));
@@ -41,15 +41,14 @@ void list_destroy(list_t **list) {
         current = next;
     }
 
-    // Free the sentinel node and the list itself
+    // Free the sentinel node and the list itself.
     free((*list)->head);
     free(*list);
     *list = NULL;
 }
 
 /**
- * @brief Add data to the front of the list.
- */
+ * @brief Add data to the front of the list
 list_t *list_add(list_t *list, void *data) {
     if (!list) return NULL;
 
@@ -105,5 +104,5 @@ int list_indexof(list_t *list, void *data) {
         current = current->next;
     }
 
-    return -1; // Data not found
+    return -1; // Data not found.
 }
